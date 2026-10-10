@@ -15,16 +15,15 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
 
+      - name: Configure Gradle Java Home
+        run: echo "org.gradle.java.home=$JAVA_HOME" >> gradle.properties
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.12.1'
-          java-version: '25'
-          java-distribution: 'temurin'
 
       - name: Build with Gradle
-        env:
-          ORG_GRADLE_JAVA_HOME: ${{ env.JAVA_HOME }}
         run: gradle build
 
       - name: Upload artifact
