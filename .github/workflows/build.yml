@@ -23,8 +23,10 @@ jobs:
         with:
           gradle-version: '8.12.1'
 
-      - name: Build with Gradle
-        run: gradle build
+      - name: Build with Gradle Wrapper
+        env:
+          ORG_GRADLE_JAVA_HOME: ${{ env.JAVA_HOME }}
+        run: ./gradlew build --no-daemon
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
