@@ -9,5 +9,3 @@ pluginManagement {
 }
 
 rootProject.name = 'examplemod'
-    it.options.release = 21
-}
