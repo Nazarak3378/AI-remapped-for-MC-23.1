@@ -19,11 +19,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.12.1'
-          java-version: '25'
-          java-distribution: 'temurin'
 
       - name: Build with Gradle
-        run: gradle build
+        run: gradle build -Dorg.gradle.java.home="${{ env.JAVA_HOME }}"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
