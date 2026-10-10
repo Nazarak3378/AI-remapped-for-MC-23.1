@@ -15,15 +15,11 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.12.1'
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.12.1
 
-      - name: Build with Gradle
-        env:
-          ORG_GRADLE_JAVA_HOME: ${{ env.JAVA_HOME }}
-        run: gradle build
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
