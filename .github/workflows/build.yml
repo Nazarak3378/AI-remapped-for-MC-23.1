@@ -16,9 +16,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Generate Gradle Wrapper
+        env:
+          ORG_GRADLE_JAVA_HOME: ${{ env.JAVA_HOME }}
         run: gradle wrapper --gradle-version 8.12.1
 
       - name: Build with Gradle Wrapper
+        env:
+          ORG_GRADLE_JAVA_HOME: ${{ env.JAVA_HOME }}
         run: ./gradlew build
 
       - name: Upload artifact
